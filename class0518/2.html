@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div>123</div>
+    <script>
+        
+        function add(num1,num2){
+            console.log();
+            // 型別要注意，字串會相加
+            //確保型別是數字
+            return parseInt(num1)+parseInt(num2)
+            //有return 結果才會丟出來
+        }
+        
+        // 值給常數，呼叫 add()
+        const res = add(1000.999,"200")
+        // console.log(res);
+
+        //改箭頭函式
+        const addRes = (num1,num2)=>{
+            return parseInt(num1)+parseInt(num2)
+            //console.log("不會出現");
+
+        }
+   
+        console.log(add(10,3));
+        console.log(addRes(200,3));
+
+        
+        // '我是 ???,血型??'
+       const callName =(name,blood)=>{
+        return `我是${name},血型${blood}`
+       }
+       console.log(callName('Amanda','O'));
+
+
+
+    </script>
+</body>
+</html>
