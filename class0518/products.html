@@ -4,30 +4,54 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <style>
+        img{
+            height: 4rem;
+        }
+    </style>
 </head>
 <body>
     <div id="app">
-        {{test}}
+        <!-- 5. 上架 -->
+        <div v-for="prodItem in products":key="prodItem.id">
+            <!-- <img :src="prodItem.image" alt=""> -->
+            <!-- <h6>{{prodItem['title']}}</h6> -->
+            
+            <p>
+                <!-- {{prodItem?.rating}} -->
+                <!-- ?=沒有prodItem就不跑? -->
+                <!-- {{"rate":3.9,"count":120}} -->
+                <!-- {{prodItem?.rating?.rate}} -->
+                <!-- {{parseInt(prodItem?.rating?.rate)}} -->
+               <span v-for="star in parseInt(prodItem?.rating?.rate)">8</span>
+               {{(prodItem?.rating?.count)}}
+            </p>
+        </div>
     </div>
 
     <script src="https://unpkg.com/vue"></script>
     <script>
         Vue.createApp({
             data() {
+                //倉庫準備好
                 return {
-                    test:'00'
+                    products:[]
                 }
-            },
-            methods: {
-               test2(){
-                console.log(2);
-               }
             },
             mounted() {
                 // 畫面渲染完，開始執行作用域中的東西
+                // 1. 叫貨車
                 fetch('https://fakestoreapi.com/products/')
-                .then(res=>res.json())
-                .then(json=>console.log(json))
+                .then(res=>{
+                    // 2. 貨車到了
+                    return (res.json())
+                })
+                .then(json=>{
+                    // 3. 貨車卸貨
+                    console.log(json)
+                    // 4. 放到倉庫裡
+                    this.products = json
+                })
             },
         }).mount("#app")
     </script>
