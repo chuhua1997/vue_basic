@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        img{
+            width: 5rem;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <button @click="addW">加大圖片</button>
+        <!-- <img src="/images/DSCF1691.JPG" alt="">一般寫法 -->
+
+        <!-- <img :src="imgUrl" style="width: 6rem;"alt=""> css 寫法-->
+
+        <!-- 函式寫 -->
+        <img :src="imgUrl":style="{
+            width: `${widths}rem`,
+            backgroundColor:bg,
+            padding:'0.5rem'
+        }" 
+        :alt="name">
+        
+      
+    </div>
+
+    <script src="https://unpkg.com/vue"></script>
+    <script>
+        Vue.createApp({
+            data() {
+                return {
+                    imgUrl:"/images/DSCF1691.JPG",
+                    bg:'#999',//string
+                    widths:1 //number，預設是0，一開始會不出現
+                }
+            },
+            methods: {
+               addW(){
+                if(this.widths === 9) return
+                //每次按下去就加大圖片
+                this.widths +=1
+                //延伸:每次按下去改顏色
+                this.bg=`#${widths}${widths}${widths}`
+               }
+            },
+        }).mount("#app")
+    </script>
+</body>
+</html>

@@ -11,7 +11,7 @@
         {{res}}
         <button @click="add">+</button>
         <br>
-        總價 : {{parse()}}
+        總價(使用computed) : {{parse()}}
         美金: {{dollar}}
     </div>
 
@@ -31,6 +31,8 @@
                 }
             },
             methods: {
+                //可以把這段轉換的function 拉到computed
+
                 add(){
                     // this.res=this.res+1
                     if(this.res>=100)return
