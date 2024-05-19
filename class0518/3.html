@@ -12,7 +12,7 @@
         <button @click="add">+</button>
         <br>
         總價 : {{parse()}}
-        <!-- 美金 : {{parseDollar()}} -->
+        美金: {{dollar}}
     </div>
 
     <script src="https://unpkg.com/vue"></script>
@@ -23,7 +23,11 @@
                     res:0,
                     count:1,
                     price:100,
-                    dollar:0
+                }
+            },
+            computed: {
+                dollar(){
+                    return (this.price*this.res)/30
                 }
             },
             methods: {
@@ -39,11 +43,12 @@
                     this.res-=this.count
                 },
                 parse(){
+                    //半正確寫法喔
                     return this.price*this.res
                 },
                 // parseDollar(){
                 //     console.log('dfsf');
-                //    return this.price*30
+                //    return this.price/30
                 // }
 
             },
